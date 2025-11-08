@@ -25,7 +25,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS middleware
 app.use(cors());
-app.options('*', cors());
 
 // Routes
 app.get('/', (req, res) => {
