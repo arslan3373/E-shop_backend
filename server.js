@@ -23,8 +23,19 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS middleware
-app.use(cors());
+// CORS middleware with proper configuration
+app.use(cors({
+  origin: [
+    'http://localhost:3000',  // Local development
+    'https://scintillating-fox-ad5081.netlify.app'  // Your Netlify frontend
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
+// Handle preflight requests
+app.options('*', cors());
 
 // Routes
 app.get('/', (req, res) => {
