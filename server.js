@@ -21,10 +21,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // CORS configuration - UPDATE THIS WITH YOUR VERCEL FRONTEND URL
+// CORS configuration - More permissive for testing
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-frontend-domain.vercel.app', 'https://your-custom-domain.com'] 
-    : ['http://localhost:3000'],
+  origin: true, // This allows all origins - use only for development/testing
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
